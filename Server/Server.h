@@ -13,7 +13,9 @@ using List = std::list<T>;
 
 class Server{
 private:
-	List<User> _users;
+	List< User > _users;
+	const String _host;
+
 
 public:
 	Server( void ) 
