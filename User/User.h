@@ -15,10 +15,10 @@ private:
 	bool _online;
 
 public:
-	User( String name_ , 
-		  String brief_ , 
-		  Natural id_  ) 
-	: _name { name_ }, _brief { brief_ }, _id { id_ }, _online {false}
+	User( String _name_ , 
+		  String _brief_ , 
+		  Natural _id_  ) 
+	: _name { _name_ }, _brief { _brief_ }, _id { _id_ }, _online {false}
 	{ /* void */ }
 
 	User( const User &clone ) 

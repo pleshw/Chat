@@ -18,12 +18,12 @@ private:
 
 
 public:
-	Server( void ) 
-	: _users { /* void */ }
+	Server( String _host_ ) 
+	: _users { /* void */ }, _host { _host_ }
 	{ /* void */ }
 
 	Server( const Server &clone ) 
-	: _users { clone._users }
+	: _users { clone._users }, _host { clone._host }
 	{ /* void */ }
 
 	// Return a list with all users.
