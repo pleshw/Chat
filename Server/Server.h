@@ -3,39 +3,38 @@
 
 #include "../User/User.h"
 #include <iostream>
-#include <list>
+#include <map>
+#include <memory>
 #include <algorithm>
 
 using std::endl;
 
-template< class T >
-using List = std::list<T>;
+template< class K, class V >
+using Map = std::map< K, V >;
 
 class Server{
 private:
-	List< User > _users;
-	const String _host;
-
+	// Key -> User.id / Value -> User
+	Map< Natural, User<Server> > _users;
 
 public:
-	Server( String _host_ ) 
-	: _users { /* void */ }, _host { _host_ }
-	{ /* void */ }
-
-	Server( const Server &clone ) 
-	: _users { clone._users }, _host { clone._host }
+	Server( void ) 
+	: _users { /* void */ }
 	{ /* void */ }
 
 	// Return a list with all users.
-	List<User> AllUsers( void ) { return _users; }
+	Map<Natural, User<Server>> AllUsers( void ) { return _users; }
 
 	// Return a list with online users.
-	List<User> OnlineUsers( void );
-	List<User> OfflineUsers( void );
+	Map<Natural, User<Server>> OnlineUsers( void );
+	Map<Natural, User<Server>> OfflineUsers( void );
 
 	// Register an user in server.
-	void SignUp( const User& );
+	void SignUp( const User<Server>& );
 	void SignUp( String, String, Natural );
+
+	// Checks for users online.
+
 
 	// Server log
 	void PrintAllUsers( void );
@@ -43,5 +42,6 @@ public:
 	void PrintOfflineUsers( void );
 };
 
+using Host = std::unique_ptr<Server>;
 
 #endif
